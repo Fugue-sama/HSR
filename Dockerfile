@@ -47,10 +47,16 @@
     
     # Copy toàn bộ mã nguồn Laravel
     COPY . .
+	
+  # Cài composer sau khi đã có code
+    RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist -vvv
     
     # Copy phần frontend đã build
     COPY --from=frontend-build /app/public/build ./public/build
     
+    # Tối ưu Laravel
+    RUN php artisan config:cache
+ 
     # Cấp quyền thư mục cần thiết
     RUN chmod -R 775 storage bootstrap/cache
     
