@@ -4,8 +4,8 @@ WORKDIR /app
 COPY resources/js resources/js
 COPY resources/css resources/css
 COPY package.json package-lock.json ./
-RUN npm install
-RUN npm run build
+RUN yarn install --ignore-peer-deps
+RUN yarn build
 
 # Step 2: PHP + Laravel
 FROM php:8.1-fpm-alpine
