@@ -12,7 +12,7 @@
     # ---------- Step 2: PHP + Laravel ----------
     FROM php:8.3-fpm-alpine
     
-    # Cài extension PHP và các thư viện hệ thống cần thiết
+    # Cài extension PHP và thư viện hệ thống
     RUN apk add --no-cache \
         bash \
         curl \
@@ -45,16 +45,22 @@
     
     WORKDIR /var/www/html
     
-    # Copy toàn bộ mã nguồn Laravel trước (để có file artisan)
+    # Copy toàn bộ mã nguồn Laravel
     COPY . .
-    
-    # Cài composer sau khi đã có code
-    RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist -vvv
     
     # Copy phần frontend đã build
     COPY --from=frontend-build /app/public/build ./public/build
     
-    # Tối ưu Laravel
+    # Cấp quyền thư mục cần thiết
+    RUN chmod -R 775 storage bootstrap/cache
+    
+    # Generate key nếu chưa có APP_KEY
+    RUN php artisan key:generate
+    
+    # Cài dependencies PHP
+    RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
+    
+    # Cache config
     RUN php artisan config:cache
     
     EXPOSE 8080
