@@ -1,8 +1,8 @@
 import { usePage } from '@inertiajs/react'
 import React from 'react'
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 
-function Auth() {
+function AuthHome() {
   const { auth } = usePage().props
   const boxNavVariants = {
     hidden: { y: -100, opacity: 0 },
@@ -26,4 +26,4 @@ function Auth() {
   )
 }
 
-export default Auth
+export default AuthHome

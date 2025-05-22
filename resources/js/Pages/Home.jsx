@@ -3,8 +3,8 @@ import "~css/home.css"
 import Starfield from "../Components/Navbar/Starfield"
 import { getImageWiki, getImgPublic } from "../Utils/getImagePath"
 import { useEffect, useRef, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import Auth from "../Components/AdminLayout/logoAuth/auth"
+import { motion } from "framer-motion"
+import AuthHome from "../Components/AdminLayout/logoAuth/AuthHome"
 
 function Home() {
     const { auth } = usePage().props
@@ -80,7 +80,7 @@ function Home() {
         <div className="box-home overflow-y-auto overflow-x-hidden relative h-fit flex gap-0 flex-col scroll-smooth ">
             <Head title={component} />
             <div className="screen-container">
-                <Auth />
+                <AuthHome />
                 <Starfield />
                 <div className="screen w-screen h-fit flex justify-center relative mt-25 ">
                     <motion.div
