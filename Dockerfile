@@ -9,8 +9,11 @@ RUN yarn build
 
 FROM php:8.3-fpm-alpine
 
-RUN apk add --no-cache bash libpng-dev libzip-dev curl autoconf dpkg-dev dpkg file g++ gcc libc-dev make pkgconf re2c \
-    freetype-dev libjpeg-turbo-dev libwebp-dev libxpm-dev
+RUN apk add --no-cache \
+    bash libpng-dev libzip-dev curl \
+    autoconf dpkg-dev dpkg file g++ gcc libc-dev make pkgconf re2c \
+    freetype-dev libjpeg-turbo-dev libwebp-dev libxpm-dev \
+    oniguruma-dev
 
 RUN docker-php-ext-configure gd \
     --with-freetype \
