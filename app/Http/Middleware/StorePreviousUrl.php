@@ -23,7 +23,7 @@ class StorePreviousUrl
             !in_array($request->path(), ['login', 'register']) &&
             !str_contains($request->path(), 'auth/google')
         ) {
-            Session::put('url.intended', url()->full());
+            $request->session()->put('url.intended', url()->full());
         }
 
         return $next($request);
