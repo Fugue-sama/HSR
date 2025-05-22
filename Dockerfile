@@ -12,7 +12,6 @@
     # ---------- Step 2: PHP + Laravel ----------
     FROM php:8.3-fpm-alpine
     
-    # Cài extension PHP và thư viện hệ thống
     RUN apk add --no-cache \
         bash \
         curl \
@@ -47,31 +46,24 @@
     
     # Copy toàn bộ mã nguồn Laravel
     COPY . .
-	
-  # Cài composer sau khi đã có code
-    RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist -vvv
     
     # Copy phần frontend đã build
     COPY --from=frontend-build /app/public/build ./public/build
     
-    # Tối ưu Laravel
-    RUN php artisan config:cache
- 
-    # Cấp quyền thư mục cần thiết
-    RUN chmod -R 775 storage bootstrap/cache
-    
-    # Tạo file .env từ .env.example nếu chưa có
-    RUN cp .env.example .env
-
-    # Generate key nếu chưa có APP_KEY
-    RUN php artisan key:generate
-    
-    # Cài dependencies PHP
+    # Cài PHP dependencies
     RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
     
-    # Cache config
-    RUN php artisan config:cache
+    # Cấp quyền cho storage & cache
+    RUN chmod -R 775 storage bootstrap/cache
+    
+    # Chạy lệnh Laravel nếu có .env
+    RUN if [ -f ".env" ]; then php artisan key:generate; fi
+    
+    # Cache config (sau khi đã có .env và key)
+    RUN if [ -f ".env" ]; then php artisan config:cache; fi
     
     EXPOSE 8080
+    
+    # Dùng server nội bộ Laravel (tạm chấp nhận trên Render)
     CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
     
