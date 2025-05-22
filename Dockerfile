@@ -60,6 +60,9 @@
     # Cấp quyền thư mục cần thiết
     RUN chmod -R 775 storage bootstrap/cache
     
+    # Tạo file .env từ .env.example nếu chưa có
+    RUN cp .env.example .env
+
     # Generate key nếu chưa có APP_KEY
     RUN php artisan key:generate
     
