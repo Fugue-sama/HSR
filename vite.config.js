@@ -19,6 +19,7 @@ export default defineConfig({
             '~utils':'/resources/js/Utils',
         }
     },
+    base: '/',
     build: {
         sourcemap: false
     }
