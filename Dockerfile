@@ -40,25 +40,23 @@
      && docker-php-ext-enable xdebug \
      && apk del autoconf dpkg-dev dpkg file g++ gcc libc-dev make pkgconf re2c
     
-    # Cài đặt Composer
+    # Cài Composer
     RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
     
     WORKDIR /var/www/html
     
-    # Copy composer files để cài dependency trước
-    COPY composer.json composer.lock ./
-    RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist -vvv
-    
-    # Copy toàn bộ mã nguồn Laravel
+    # Copy toàn bộ mã nguồn Laravel trước (để có file artisan)
     COPY . .
     
-    # Copy phần frontend đã build sang thư mục public
+    # Cài composer sau khi đã có code
+    RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist -vvv
+    
+    # Copy phần frontend đã build
     COPY --from=frontend-build /app/public/build ./public/build
     
     # Tối ưu Laravel
     RUN php artisan config:cache
     
-    # Render sử dụng cổng 8080, nên ta dùng php-fpm ở đó
     EXPOSE 8080
     CMD ["php-fpm", "-y", "/usr/local/etc/php-fpm.conf", "-R"]
     
