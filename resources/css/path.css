@@ -1,0 +1,237 @@
+@import './styles.css';
+
+.path_container {
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(180deg, #47505f 0%, #1d1d1d 100%);
+}
+.path_container::before {
+  @apply absolute right-0 bottom-0 w-[50%] h-screen z-20 bg-right bg-no-repeat bg-cover opacity-50;
+  background-image: url('../../public/images/circleRight.png');
+  content: '';
+  animation: move 1s forwards ease-in-out;
+}
+
+.path_container::after {
+  @apply absolute left-0  bottom-0 w-[50%] h-screen z-20 bg-center bg-no-repeat bg-cover opacity-50;
+  background-image: url('../../public/images/de2eef7d-d27e-49b2-be50-6d63ffce8765.png');
+  content: '';
+  animation: move 1s forwards ease-in-out;
+}
+
+@keyframes move {
+  0% {
+    transform: translateY(100%)rotate(20deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+.path_show { 
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  z-index: 30;
+}
+.path_content {
+  position: relative;
+  width: 54.81rem;
+  height: 27.625rem;
+  background-size: 100%;
+  left: 2.5rem;
+  top: 30px;
+}
+.main_title {
+  width: 11.55rem;
+  height: 2.67rem;
+  background-size: cover;
+  position: absolute;
+  top: 2.5rem;
+  color: #e9e9e9;
+  font-size: .3rem;
+  padding-left: .4rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-image: url('../../public/images/title.png');
+}
+.title {
+  padding-left: 20px;
+  height: 100%;
+  color: white;
+  font-family: "Rubik Glitch", system-ui;
+  font-size: large;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.main_content {
+  position: relative;
+  top: 6.2rem;
+}
+
+.poster-container {
+  height: 53.59rem;
+  width: 48.03rem;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  z-index: 20;
+  left: initial;
+  right: -10rem;
+  bottom: -3rem;
+  top: -45% ;
+  overflow: visible;
+  user-select: none;
+  pointer-events: none;
+}
+.subtitle-container {
+  position: absolute;
+  width: 	25.3125rem;
+  letter-spacing: 2px;
+  font-size: small;
+  top: 55%;
+  left: 12rem;
+  text-align: left;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.6);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
+.path-warp {
+  position: relative;
+  z-index: 50;
+  width: 7.8125rem;
+  height: 30rem;
+  margin-right: .25rem;
+  padding-top: 2.6875rem;
+  padding-left: .13rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+
+.sp-line {
+  position: absolute;
+  height: 39.81rem;
+  width: 2.656rem;
+}
+
+.arrow-down, .arrow-up {
+  width: 1.40625rem;
+  position: absolute;
+  cursor: pointer;
+  z-index: 30;
+}
+.arrow-up {
+  top: 5.8rem;
+}
+.arrow-down {
+  transform: translateY(-50%);
+  bottom: -4.5rem;
+}
+
+.swiper_container, .swiper {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  list-style: none;
+  transform: translate3d(0px, 0, 0);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 58px;
+}   
+
+.swiper-wrapper {
+  box-sizing: content-box;
+  transition-property: transform;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.swiper-slide {
+  color: #000;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  transition-property: transform;
+  flex-shrink: 0;
+  width: 100%;
+}
+.swiper-slide .item {
+  position: relative;
+  overflow-clip-margin: content-box;
+  overflow: clip;
+  width: 6rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.swiper-slide .item .img {
+  height: 5.46875rem;
+  position: relative;
+  user-select: none;
+}
+
+.swiper-slide .item .img img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.swiper-slide .item  .type-name {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-top: .8rem;
+  text-align: center;
+  color: rgb(109, 109, 109);
+}
+.swiper-slide .item  .type-name.active {
+  color: rgb(255, 255, 255);
+}
+
+.right .name-path {
+  font-family: "Rubik Glitch", system-ui;
+  font-weight: 500;
+}
+.mechDesc {
+  @apply z-50 absolute top-[8rem] text-white left-[1rem] p-[0.5rem] w-[25.5625rem] h-[12.4375rem] rounded-[0.5rem];
+  letter-spacing: 1px;
+  background-size: 100%;
+  background-image: url('../../public/images/story-bg.45d72b5.png');
+}
+
+.text-highlight {
+  color: yellow;
+}

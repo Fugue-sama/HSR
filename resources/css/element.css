@@ -1,0 +1,23 @@
+@import './styles.css';
+.box {
+  overflow: auto;
+  height: 100vh;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  background: linear-gradient(180deg, #47505f 0%, #1d1d1d 100%);
+}
+.box::-webkit-scrollbar{
+  display: none;
+}
+
+.text-row {
+  @apply font-bold whitespace-nowrap text-white;
+}
+.description {
+  @apply text-sm whitespace-pre-wrap leading-relaxed tracking-wide break-words max-h-[200px] overflow-auto p-1;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.description::-webkit-scrollbar {
+  display: none;
+}

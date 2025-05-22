@@ -1,0 +1,56 @@
+@import './styles.css';
+
+:root {
+  --top-bottom-base: 8rem;
+  --top-bottom-inner: 7rem;
+  --right-left-base: 24rem;
+  --right-left-inner: 23rem;
+}
+.layoutBG::-webkit-scrollbar, .popup::-webkit-scrollbar {
+ width: 3px;
+}
+.layoutBG::-webkit-scrollbar-track, .popup::-webkit-scrollbar-track{
+  background: #121212;
+}
+.layoutBG::-webkit-scrollbar-thumb, .popup::-webkit-scrollbar-thumb{
+  background: #c3c3c3;
+  border-radius:  8px;
+}
+
+.layoutBG {
+  background: linear-gradient(180deg, #47505f 0%, #1d1d1d 100%);
+}
+
+.bg_card {
+  @apply absolute w-[5rem] ;
+  right: calc((var(--right-left-base) - var(--right-left-inner)) / 2);
+  top: calc((var(--top-bottom-base) - var(--top-bottom-inner)) / 2);
+}
+
+.layout-card {
+  position: relative;
+  overflow: hidden;
+  background: #282828;
+  box-shadow: 2px 2px 2px #000;
+  transition: all .3s ease-out;
+  cursor: pointer;
+}
+.layout-card:hover { 
+  transform: scale(1.1);
+  font-size: large;
+  border: 1px solid #a6a180;
+  box-shadow: 1px 1px 1px 1px #a6a180;
+}
+.layout-card::after {
+  content: '';
+  position: absolute;
+  top: calc((var(--top-bottom-base) - var(--top-bottom-inner)) / 2);
+  left: calc((var(--right-left-base) - var(--right-left-inner)) / 2);
+  width: 23rem;
+  height: 7rem;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url('/images/rectAngleLine.png');
+  user-select: none;
+  pointer-events: none
+}

@@ -1,0 +1,104 @@
+@import './styles.css';
+
+
+
+.detail-container::-webkit-scrollbar, .scrollbar::-webkit-scrollbar {
+  width: 3px;
+}
+.detail-container::-webkit-scrollbar-track, .scrollbar::-webkit-scrollbar-track {
+  background: #1b1d26;
+  border-radius: 8px;
+}
+.detail-container::-webkit-scrollbar-thumb, .scrollbar::-webkit-scrollbar-thumb {
+  background: #3c4355; 
+  border-radius: 8px;
+}
+.detail-container::-webkit-scrollbar-thumb:hover, .scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #3c4355;
+}
+
+.detail-container {
+  @apply bg-[#1a1c28] relative w-full h-screen z-30 overflow-auto;
+  scroll-behavior: smooth;
+  font-family: "Rubik Glitch", system-ui;
+}
+
+.poster {
+  @apply w-full h-full fixed pointer-events-none flex justify-center items-center;
+}
+
+.poster img {
+  @apply absolute h-full top-0 transform translate-x-[40px] object-contain object-center;
+}
+
+.char-attributes {
+  @apply h-auto w-[40%] flex flex-col items-center;
+}
+.attributes {
+  @apply relative flex flex-col items-center;
+}
+.char-card {
+  box-shadow: 10px 0px 5px 5px rgba(0, 0, 0, .9);
+}
+.char-name {
+  @apply text-[35px] font-bold text-white;
+  font-family: "Roboto", Sans-serif;
+  letter-spacing: 2px;
+}
+
+
+.char-info_detail {
+  @apply relative w-full px-25 top-20;
+}
+.title-info, .trace-title {
+  @apply text-3xl text-white w-full p-3 ;
+  font-weight: 500;
+  line-height: 3rem;
+  background-color: #050A2780;
+} 
+.trace-title p {
+  @apply mx-5 px-2;
+  cursor: pointer;
+}
+.trace-title .trace.active {
+  cursor: pointer;
+  background-color: #0291f7c4;
+}
+.box-info {
+  @apply  bg-[#232733] ;
+}
+.basis {
+  @apply text-[#9ca3af];
+}
+.container-info .info-left, .info-right {
+  @apply  w-full flex flex-col justify-evenly gap-2;
+}
+.container-info .lable{
+ @apply w-[50%];
+}
+.gameplay .lable, .char-description .lable {
+ @apply w-[15%];
+}
+.gameplay .info-content, .char-description .info-content {
+  @apply w-[85%];
+}
+.container-info .info-content {
+  @apply w-[50%];
+}
+.row{
+  @apply flex text-[1.2rem] p-2 gap-2 ;
+  background: #1a1c28;
+  letter-spacing: 1px;
+}
+.container-info .path-row, .element-row, .name-row, .faction-row {
+  @apply flex text-[1.1rem] px-2 ;
+  line-height: 50px;
+  background: #1a1c28;
+}
+
+.trace-card {
+  background-color: rgba(0, 0, 0, .3);
+}
+.soul-card {
+  letter-spacing: 2px;
+}

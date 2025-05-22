@@ -1,0 +1,89 @@
+@import './styles.css';
+
+:root {
+  --top-bottom-base: 8rem;
+  --top-bottom-inner: 7rem;
+  --right-left-base: 24rem;
+  --right-left-inner: 23rem;
+}
+.characters {
+  background: linear-gradient(180deg, #47505f 0%, #1d1d1d 100%);
+}
+.characters::-webkit-scrollbar, .listt-toggle::-webkit-scrollbar   {
+  width: 3px;
+}
+.characters::-webkit-scrollbar-track, .listt-toggle::-webkit-scrollbar-track {
+  background: #121212;
+}
+.characters::-webkit-scrollbar-thumb, .listt-toggle::-webkit-scrollbar-thumb {
+  background: #c3c3c3;
+  border-radius:  8px;
+}
+.character-filter::after {
+  content: '';
+  position: absolute;
+  border-bottom: 1px solid #c3c3c331;
+  width: 100%;
+  right: 2rem;
+  bottom: -1rem;
+} 
+
+.type-item {
+  background-color: rgba(0, 0, 0, .48);
+  padding: 8px;
+}
+.type-item.selected {
+  border: 1px solid #FFD700;
+}
+.character-card {
+  position: relative;
+  overflow: hidden;
+  width: 24rem;
+  height: 8rem;
+  background: #282828;
+  box-shadow: 2px 2px 2px #000;
+}
+.character-card::after {
+  content: '';
+  position: absolute;
+  top: calc((var(--top-bottom-base) - var(--top-bottom-inner)) / 2);
+  left: calc((var(--right-left-base) - var(--right-left-inner)) / 2);
+  width: 23rem;
+  height: 7rem;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url('/images/rectAngleLine.png');
+  user-select: none;
+  pointer-events: none
+}
+.char-bg_card {
+  @apply absolute w-[5rem] ;
+  right: calc((var(--right-left-base) - var(--right-left-inner)) / 2);
+  top: calc((var(--top-bottom-base) - var(--top-bottom-inner)) / 2);
+}
+.character-card .card-main {
+  @apply relative h-[6.6rem] w-[5.7rem]; 
+  border-radius: 5px 5px 5px 5px ;
+  overflow: hidden;
+  left: calc((var(--right-left-base) - var(--right-left-inner)) / 2);
+  top: calc((var(--top-bottom-base) - var(--top-bottom-inner)) / 2);
+}
+
+.character-card .char-card-left {
+  @apply absolute h-fit;
+  right: calc((var(--right-left-base) - var(--right-left-inner)) / 2 +  0.5rem);
+  top: calc((var(--top-bottom-base) - var(--top-bottom-inner)) / 2);
+}
+.character-card .char-card-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.char-info {
+  @apply whitespace-nowrap h-[1.2rem] text-[1rem];
+}
+.char-element {
+  border-left: 1px solid #3c4355;
+}
+.btnFilter {
+  cursor: pointer;
+}

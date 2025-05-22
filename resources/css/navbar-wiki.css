@@ -1,0 +1,53 @@
+@import './styles.css';
+
+
+.item-wiki {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  font-weight: 500;
+  color: #8f9297;
+}
+
+.item-wiki .item-wiki_img,.item-wiki p {
+  user-select: none;
+  pointer-events: none;
+}
+.item-wiki.selected {
+  background-image: url('../../public/images/Navbarwiki/bg-item_menu_selected.png');
+  background-size: 100% 100%;
+  background-position: left;
+  background-repeat: no-repeat;
+  font-weight: 600;
+  color: white;
+}
+.item-wiki {
+  background-image: url('../../public/images/Navbarwiki/bg-item_not_hover.png');
+  background-position: center;
+}
+.item-wiki:hover:not(.selected){
+  background-image: url('../../public/images/Navbarwiki/bg-item_hover.png');
+  color: white;
+  background-position: center;
+  font-weight: 600;
+  cursor: pointer;
+}
+.text-recent::after  {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 30;
+  border-bottom: 1px solid #8f929767;
+}
+
+.recent-content::-webkit-scrollbar   {
+  width: 3px;
+}
+.recent-content::-webkit-scrollbar-track {
+  background: #121212;
+}
+.recent-content::-webkit-scrollbar-thumb {
+  background: #c3c3c3;
+  border-radius:  8px;
+}

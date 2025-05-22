@@ -1,0 +1,35 @@
+@import './styles.css';
+
+body {
+  @apply  w-full h-screen overflow-hidden;
+  background:  radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  font-family: "Roboto", Sans-serif;
+}
+
+main {
+  @apply relative w-full h-screen overflow-hidden;
+}
+.nav {
+  box-shadow: 2px 2px 5px #000
+}
+.nav-boderBottom {
+  @apply relative text-[#d4b893] font-bold text-[1.1rem];
+  transition: all .3s; 
+  transform-origin: center;
+}
+.nav-boderBottom::after {
+  content: '';
+  @apply absolute w-full bottom-0 left-0 border-1 border-[#d4b893] transition-all duration-500 ease-in-out;
+}
+.nav-animation {
+  animation: nav 0.5s ease-in-out forwards;
+}
+
+@keyframes nav {
+  from {
+    transform: translateY(-50px);
+  }
+  to {
+    transform: translateY(0);
+  } 
+}

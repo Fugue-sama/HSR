@@ -1,0 +1,138 @@
+@import './styles.css';
+
+:root {
+  --top-bottom-base: 11rem;
+  --top-bottom-inner: 10rem;
+  --right-left-base: 24rem;
+  --right-left-inner: 23rem;
+}
+
+.lightcores::-webkit-scrollbar, .lightcores-toggle::-webkit-scrollbar   {
+  width: 3px;
+}
+.lightcores::-webkit-scrollbar-track, .lightcores-toggle::-webkit-scrollbar-track {
+  background: #121212;
+}
+.lightcores::-webkit-scrollbar-thumb, .lightcores-toggle::-webkit-scrollbar-thumb {
+  background: #c3c3c3;
+  border-radius:  8px;
+}
+.lightcores {
+  background: linear-gradient(180deg, #47505f 0%, #1d1d1d 100%);
+}
+
+.lightcore-card {
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 24rem;
+  height: 11rem;
+  background: #282828;
+  box-shadow: 2px 2px 2px #000;
+}
+.lightcore-card::after {
+  content: '';
+  position: absolute;
+  top: calc((var(--top-bottom-base) - var(--top-bottom-inner)) / 2);
+  left: calc((var(--right-left-base) - var(--right-left-inner)) / 2);
+  width: 23rem;
+  height: 10rem;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url('/images/rectAngleLine.png');
+  user-select: none;
+  pointer-events: none
+}
+.lightcore-bg_card {
+  @apply absolute w-[4rem] ;
+  right: calc((var(--right-left-base) - var(--right-left-inner)) / 2);
+  top: calc((var(--top-bottom-base) - var(--top-bottom-inner)) / 2);
+}
+.lightcore-card .card-main {
+  @apply relative m-2 h-[8.6rem] w-[5.7rem]; 
+  border-radius: 5px 5px 5px 5px ;
+  overflow: hidden;
+  left: calc((var(--right-left-base) - var(--right-left-inner)) / 2);
+  top: calc((var(--top-bottom-base) - var(--top-bottom-inner)) / 2);
+
+}
+.lightcore-card .card-main::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  background-image: url('../../public/images/card-list/weaponCardCover.png');
+  background-repeat: no-repeat;
+  background-size: cover
+}
+.lightcore-card .lightcore-card-left {
+  @apply absolute h-fit;
+  right: calc((var(--right-left-base) - var(--right-left-inner)) / 2 +  0.5rem);
+  top: calc((var(--top-bottom-base) - var(--top-bottom-inner)) / 2);
+}
+.lightcore-card .lightcore-card-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.lightcore-info {
+  @apply whitespace-nowrap h-[1.2rem] text-[1rem];
+}
+.btnFilter {
+  cursor: pointer;
+}
+.option-item {
+  transition: all .2s ease;
+  @apply text-[#959997];  
+
+}
+.option-item:hover {
+  @apply text-[#d4bf92] border-[#dfc296] bg-[#78787852];  
+}
+
+
+.lightcore-link {
+  @apply border-gray-700 cursor-pointer flex flex-col relative w-[25%] items-center gap-5 border rounded-xl p-4 shadow-md min-w-[15rem] bg-[#3c43557e] transition-all duration-200;
+}
+
+.lightcore-link:hover {
+  @apply border-[#d9be93] bg-[#20242dd9] shadow-[0_0_10px_#f29e38];
+}
+
+.lc-build {
+  @apply rotate-6 min-w-[10rem] h-[15rem] relative overflow-hidden rounded-md;
+}
+
+.lc-build img {
+  @apply w-full h-full object-contain pt-3 pl-3;
+}
+.lc-build::before {
+  content: '';
+  position: absolute;
+  width: 99%;
+  height: 95%;
+  z-index: 20;
+  background-image: url('../../public/images/card-list/weaponCardCover.png');
+  background-repeat: no-repeat;
+  background-size: cover
+}
+
+.lightcore-link .flex-1 {
+  @apply flex-grow text-center;
+}
+
+.lightcore-link .text-lg {
+  @apply text-lg;
+}
+
+.lightcore-link .font-semibold {
+  @apply font-semibold;
+}
+
+.lightcore-link .mb-1 {
+  @apply mb-1;
+}
+
+.lightcore-link .text-\[\#d1b890\] {
+  @apply text-[#d1b890];
+}

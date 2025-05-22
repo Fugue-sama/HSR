@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: hsr-book-character
+    env: docker
+    dockerfilePath: Dockerfile
+    plan: free
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: 'false'
+      - key: APP_URL
+        value: https://hsr.onrender.com
+      - key: DB_CONNECTION
+        value: pgsql         
+      - key: DB_HOST
+        value: dpg-d0n9ghmuk2gs73bnhns0-a  
+      - key: DB_PORT
+        value: '5432'
+      - key: DB_DATABASE
+        value: hsr_ckei
+      - key: DB_USERNAME
+        value: hsr_ckei_user
+      - key: DB_PASSWORD
+        value: 3rDWMI96KNAZReu6yuoiNrFDRx1wHiOT
+    routes:
+      - type: http
+        port: 9000

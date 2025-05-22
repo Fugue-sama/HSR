@@ -1,0 +1,48 @@
+@import './styles.css';
+.layout-detail_container {
+  background: linear-gradient(180deg, #47505f 0%, #1d1d1d 100%);
+}
+.lightcore-detail_container::-webkit-scrollbar, .layout-detail_container::-webkit-scrollbar {
+  width: 3px;
+}
+.lightcore-detail_container::-webkit-scrollbar-track, .layout-detail_container::-webkit-scrollbar-track {
+  background: #121212;
+}
+.lightcore-detail_container::-webkit-scrollbar-thumb , .layout-detail_container::-webkit-scrollbar-thumb{
+  background: #c3c3c3;
+  border-radius:  8px;
+}
+
+.lc-img-contain::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-image: url('../../public/images/card-list/weaponCardCover.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.lc-desc {
+  font-family: "Roboto", Sans-serif;
+}
+/* build */
+.lc-build::before {
+  position: absolute;
+  content: '';
+  background-image: url('../../public/images/card-list/weaponCardCover.png');
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  background-repeat: no-repeat;
+  background-size: cover
+}
+.slider {
+  overflow-x: auto;
+  -ms-overflow-style: none; 
+  scrollbar-width: none;  
+}
+
+.slider::-webkit-scrollbar {
+  display: none;       
+}

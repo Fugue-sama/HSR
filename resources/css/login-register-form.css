@@ -1,0 +1,57 @@
+@import './styles.css';
+:root {
+  --top-bottom-base: 8rem;
+  --top-bottom-inner: 7rem;
+  --right-left-base: 24rem;
+  --right-left-inner: 23rem;
+}
+input::-ms-reveal,
+input::-webkit-credentials-auto-fill-button {
+  display: none;
+}
+.form-contain {
+  background: linear-gradient(180deg, #47505f 0%, #1d1d1d 100%);
+}
+.detail-form {
+  @apply  relative w-full bg-[#282828] shadow-lg rounded-lg p-8;
+}
+.detail-form ::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: 1rem;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url('/images/rectAngleLine.png');
+  user-select: none;
+  pointer-events: none
+}
+
+.scrollForm::-webkit-scrollbar,
+.customScroll::-webkit-scrollbar {
+  width: 2px;
+}
+
+.customScroll::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 4px;
+}
+
+.customScroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+/* Ẩn spinner trên Chrome, Safari, Edge */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Ẩn spinner trên Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input {
+  cursor: pointer;
+}
