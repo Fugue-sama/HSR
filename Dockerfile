@@ -16,16 +16,12 @@ RUN yarn build
 FROM php:8.1-fpm-alpine
 WORKDIR /var/www/html
 
-RUN apk add --no-cache \
-    bash \
-    git \
-    libpng-dev \
-    oniguruma-dev \
-    zip \
-    unzip \
-    curl \
+RUN apk add --no-cache libpng-dev oniguruma-dev zip unzip curl \
     && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
 
+RUN composer clear-cache
+
+RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist -vvv
 # Copy source Laravel
 COPY . .
 
