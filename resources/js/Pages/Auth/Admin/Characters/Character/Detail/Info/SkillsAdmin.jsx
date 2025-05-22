@@ -7,7 +7,7 @@ const skillKeys = ["basis", "skill", "ultimate", "talent", "technique"]
 
 const path_line = ['destruction_wiv5vh', 'hunt_znafvz', 'erudition_ynmee7', 'harmony_kvcpz1', 'nihility_tc4cz3', 'preservation_ywtbrn', 'abundance_zgxpc8', 'memory_vcdrqg']
 
-export default function Skills({pathID, skills }) {
+function SkillsAdmin ({pathID, skills }) {
   const path = path_line[pathID -1]
   const [index, setIndex] = useState(0)
   const [direction, setDirection] = useState(0)
@@ -96,3 +96,5 @@ export default function Skills({pathID, skills }) {
    </>
   )
 }
+
+export default SkillsAdmin

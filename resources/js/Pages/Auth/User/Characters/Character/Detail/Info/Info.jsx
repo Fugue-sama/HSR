@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import parse from 'html-react-parser'
-import Skills from './skills'
+import SkillsUser from './SkillsUser'
 import Souls from './Souls'
 import { AnimatePresence, motion } from 'framer-motion'
 import Build from './Build'
@@ -94,7 +94,7 @@ function Info({ character }) {
               transition={{ duration: 0.4 }}
               className="w-full h-full"
             >
-              <Skills pathID={character.path.id} skills={skills} />
+              <SkillsUser pathID={character.path.id} skills={skills} />
             </motion.div>
           )}
 
