@@ -55,15 +55,17 @@
     
     # Cấp quyền cho storage & cache
     RUN chmod -R 775 storage bootstrap/cache
-    
+    # Tạo file .env từ .env.example nếu chưa có
+    RUN [ -f .env ] || cp .env.example .env
     # Chạy lệnh Laravel nếu có .env
     RUN if [ -f ".env" ]; then php artisan key:generate; fi
     
     # Cache config (sau khi đã có .env và key)
     RUN if [ -f ".env" ]; then php artisan config:cache; fi
     
-    EXPOSE 8080
     
     # Dùng server nội bộ Laravel (tạm chấp nhận trên Render)
-    CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
+    EXPOSE 8080
+    CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=${PORT:-8080}"]
     
+        
