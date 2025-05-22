@@ -11,11 +11,11 @@ RUN yarn build
 # Step 2: PHP + Laravel
 FROM php:8.3-fpm-alpine
 # Cài các extension cần thiết
-RUN apk add --no-cache bash libpng-dev libzip-dev curl \
+RUN apk add --no-cache bash libpng-dev libzip-dev curl autoconf dpkg-dev dpkg file g++ gcc libc-dev make pkgconf re2c \
     && docker-php-ext-install pdo pdo_mysql mbstring zip gd \
-    && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
     && pecl install xdebug \
-    && docker-php-ext-enable xdebug
+    && docker-php-ext-enable xdebug \
+    && apk del autoconf dpkg-dev dpkg file g++ gcc libc-dev make pkgconf re2c
 
 # Cài Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
