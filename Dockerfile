@@ -3,8 +3,10 @@ FROM node:18-alpine AS frontend-build
 WORKDIR /app
 
 # Copy file cấu hình + source code
-COPY package.json yarn.lock vite.config.js ./
 COPY resources resources
+COPY vite.config.js ./
+COPY package.json yarn.lock vite.config.js ./
+COPY resources ./resources
 
 # Install dependencies và build frontend
 RUN yarn install --ignore-peer-deps
@@ -27,8 +29,8 @@ RUN apk add --no-cache \
 # Copy source Laravel
 COPY . .
 
-# Copy frontend build ra public (nếu outDir là dist)
-COPY --from=frontend-build /app/dist ./public/build
+# Copy frontend build ra public 
+COPY --from=frontend-build /app/public/build ./public/build
 
 # Cài Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
