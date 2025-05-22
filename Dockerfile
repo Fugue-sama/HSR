@@ -1,9 +1,12 @@
-# Step 1: build frontend
+# Step 1: Build frontend
 FROM node:18-alpine AS frontend-build
 WORKDIR /app
-COPY resources/js resources/js
-COPY resources/css resources/css
-COPY package.json package-lock.json ./
+
+# Copy file cấu hình + source code
+COPY package.json yarn.lock vite.config.js ./
+COPY resources resources
+
+# Install dependencies và build frontend
 RUN yarn install --ignore-peer-deps
 RUN yarn build
 
@@ -11,7 +14,6 @@ RUN yarn build
 FROM php:8.1-fpm-alpine
 WORKDIR /var/www/html
 
-# Cài thêm extensions nếu cần
 RUN apk add --no-cache \
     bash \
     git \
@@ -22,20 +24,18 @@ RUN apk add --no-cache \
     curl \
     && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
 
-# Copy source code Laravel vào
+# Copy source Laravel
 COPY . .
 
-# Copy frontend build ra public folder (tùy project)
+# Copy frontend build ra public (nếu outDir là dist)
 COPY --from=frontend-build /app/dist ./public/build
 
 # Cài Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
 RUN composer install --no-dev --optimize-autoloader
 
-# Cache config và migrate DB
+# Cache config
 RUN php artisan config:cache
-RUN php artisan migrate --force
 
 EXPOSE 9000
 CMD ["php-fpm"]
