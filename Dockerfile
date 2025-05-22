@@ -34,7 +34,7 @@ COPY --from=frontend-build /app/public/build ./public/build
 
 # Cài Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader -vvv
 
 # Cache config
 RUN php artisan config:cache
