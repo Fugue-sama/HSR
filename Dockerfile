@@ -12,8 +12,11 @@ FROM php:8.3-fpm-alpine
 RUN apk add --no-cache \
     bash libpng-dev libzip-dev curl \
     autoconf dpkg-dev dpkg file g++ gcc libc-dev make pkgconf re2c \
-    freetype-dev libjpeg-turbo-dev libwebp-dev libxpm-dev \
-    oniguruma-dev
+    oniguruma-dev linux-headers \
+ && docker-php-ext-install pdo pdo_mysql mbstring zip gd \
+ && pecl install xdebug \
+ && docker-php-ext-enable xdebug \
+ && apk del autoconf dpkg-dev dpkg file g++ gcc libc-dev make pkgconf re2c linux-headers
 
 RUN docker-php-ext-configure gd \
     --with-freetype \
