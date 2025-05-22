@@ -28,7 +28,7 @@ RUN composer clear-cache
 RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist -vvv
 
 # Copy frontend build từ frontend-build stage (vì vite mặc định build ra thư mục dist)
-COPY --from=frontend-build /app/dist ./public/build
+COPY --from=frontend-build /app/public/build ./public/build
 
 RUN php artisan config:cache
 
