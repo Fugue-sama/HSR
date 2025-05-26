@@ -1,8 +1,8 @@
 // Components/RelicForm.jsx
-import React, { useRef } from 'react';
+import React from 'react';
 import { getImage } from '../../../../../Utils/getImagePath';
 
-function RelicForm({ relics, relicOpen, setRelicOpen, data, setData, toggleSelection, relicRef }) {
+function RelicForm({ relics, relicOpen, setRelicOpen, data, toggleSelection, relicRef }) {
     return (
         <div className="relative" ref={relicRef}>
             <label className="block text-sm font-medium text-[#d4b990]">

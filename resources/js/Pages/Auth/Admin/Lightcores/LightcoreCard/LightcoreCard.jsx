@@ -4,6 +4,7 @@ import { Link } from '@inertiajs/react'
 import parse from 'html-react-parser'
 import Hashids from 'hashids'
 import { getImage, getImageWiki, getImgPublic } from '../../../../../Utils/getImagePath'
+import ImageWithFallback from '../../../../../Components/ImageWithFallback'
 
 function LightcoreCard({lightcore, path}) {
   const hashid = new Hashids('salt', 8)
@@ -27,10 +28,11 @@ function LightcoreCard({lightcore, path}) {
     whileInView={{ opacity: 1, y: 0, scale: 1 }}
     viewport={{ amount: 0.8 }}
     className="lightcore-card btnFilter" ref={cardRef} onClick={() => setOpenChoose(!openChoose)}>
-        <img
+       <ImageWithFallback
             src={getImage(path.image)}
-            className="lightcore-bg_card opacity-20"
+            fallbackSrc={getImgPublic('logo-web.webp')}
             alt=""
+            className="lightcore-bg_card opacity-20"
         />
         <div className="lightcore-card-title relative flex m-1" >
             <div className={`card-main`}>

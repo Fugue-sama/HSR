@@ -11,7 +11,7 @@ function WikiLayout({ title, children}) {
 
     const navigation = getNavigationByRole(role)
     return (
-        <div >
+        <div style={{ background: "linear-gradient(180deg, #47505f 0%, #1d1d1d 100%)" }} >
         <Head title={title} />
             <NavbarWiki navigation={navigation}/>
             {children}

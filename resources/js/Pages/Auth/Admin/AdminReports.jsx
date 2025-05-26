@@ -73,7 +73,7 @@ const AdminReports = () => {
 
   return (
     <WikiLayout>
-      <div className="w-[50%] h-screen mx-auto text-white p-6 px-10">
+     <div className="w-[50%] h-screen mx-auto text-white p-6 px-10" >
         <h2 className="text-2xl font-bold mb-6 text-center">Quản lý báo cáo bình luận</h2>
 
         <AnimatePresence mode="wait">

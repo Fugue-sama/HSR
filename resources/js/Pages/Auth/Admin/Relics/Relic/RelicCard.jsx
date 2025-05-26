@@ -1,9 +1,11 @@
 import parse from 'html-react-parser'
-import { Link } from "@inertiajs/react"
+import { Link, router } from "@inertiajs/react"
 import Hashids from "hashids"
 import { motion , AnimatePresence} from 'framer-motion'
 import { getImage } from "../../../../../Utils/getImagePath"
 import React, { useEffect, useRef, useState } from 'react'
+import { toast } from 'react-toastify'
+import { route } from 'ziggy-js'
 
 function RelicCard({ Relic }) {
     
@@ -22,7 +24,28 @@ function RelicCard({ Relic }) {
           document.addEventListener('mousedown', handleClickOutSide)
           return ()=> document.removeEventListener('mousedown', handleClickOutSide)
         }, [])
-
+    const handleDelete = () => {
+        const routeName = Relic.set_four
+            ? 'adm.relics.destroy'
+            : 'adm.ornament.destroy'
+    
+        const encodedId = hashid.encode(Relic.id)
+    
+        router.visit(route(routeName, encodedId), {
+            method: 'delete',
+            onStart: () => {
+                toast.loading('Đang xóa...')
+            },
+            onSuccess: () => {
+                toast.dismiss()
+                toast.success('Xóa thành công!')
+            },
+            onError: () => {
+                toast.dismiss()
+                toast.error('Xóa thất bại!')
+            },
+        })
+    }
     return (
         <div 
             className="outline-none focus:outline-none ring-0 focus:ring-0" >
@@ -110,19 +133,13 @@ function RelicCard({ Relic }) {
                         title="Chỉnh sửa" className="cursor-pointer hover:underline font-bold p-2 rounded-2xl">
                             Chỉnh sửa
                         </Link>
-                        <Link
-                            href={
-                            Relic.set_four
-                                ? route('adm.relics.destroy', hashid.encode(Relic.id))
-                                : route('adm.ornament.destroy', hashid.encode(Relic.id))
-                            }
-                            method="delete"
-                            as="button"
+                        <button
+                            onClick={handleDelete}
                             title="Xóa"
                             className="cursor-pointer hover:underline font-bold p-2 rounded-2xl"
                         >
                             Xóa
-                        </Link>
+                        </button>
                         </motion.div>
                         )}
                     </AnimatePresence>

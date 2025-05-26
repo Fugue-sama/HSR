@@ -10,7 +10,6 @@ export default function AvatarUpload({isEditMode, setAvatar, avatar }) {
     if (file) {
       setAvatar(file)
       setAvatarPreview(URL.createObjectURL(file))
-      console.log(avatar, avatarPreview);
     }
     else {
       setAvatarPreview(getImage(avatar))

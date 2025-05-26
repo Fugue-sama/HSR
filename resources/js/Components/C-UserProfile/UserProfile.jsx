@@ -6,6 +6,7 @@ import AvatarUpload from "./AvatarUpload"
 import { getImgPublic } from "../../Utils/getImagePath"
 import { router } from "@inertiajs/react"
 import { route } from "ziggy-js"
+import { toast } from 'react-toastify'
 
 export default function UserProfile() {
   const [user, setUser] = useState(null)
@@ -44,35 +45,45 @@ export default function UserProfile() {
         setLoading(false)
       })
   }, [])
+  console.log(avatar);
 
-  const handleSave = async () => {
+  const handleSave = async (e) => {
+  e.preventDefault()
     setError(null)
     setSuccess(null)
   
     if (showPasswordForm) {
       if (newPassword !== confirmPassword) {
         setError("Mật khẩu mới và xác nhận không khớp!")
+        toast.error("Mật khẩu mới và xác nhận không khớp!")
         return
       }
       if (!password || !newPassword) {
         setError("Vui lòng nhập đủ thông tin mật khẩu!")
+        toast.error("Vui lòng nhập đủ thông tin mật khẩu!")
         return
       }
     }
   
     setSaving(true)
+    console.log(avatar);
   
     const formData = new FormData()
     formData.append("name", name)
-    if (avatar instanceof File || avatar instanceof Blob) {
+
+
+
+    if (avatar instanceof Object && avatar.name && avatar.size && avatar.type) {
       formData.append("avatar", avatar)
     }
+    console.log(avatar);
     if (showPasswordForm) {
       formData.append("password", password)
       formData.append("new_password", newPassword)
       formData.append("confirm_password", confirmPassword)
     }
     formData.append('_method', 'put')
+  
     router.post(route("profile.update"), formData, {
       preserveScroll: true,
       forceFormData: true,
@@ -80,6 +91,7 @@ export default function UserProfile() {
         const updatedUser = page.props.auth.user 
         setUser(updatedUser)
         setSuccess("Lưu thay đổi thành công!")
+        toast.success("Lưu thay đổi thành công!")
         setShowPasswordForm(false)
         setPassword("")
         setNewPassword("")
@@ -93,6 +105,7 @@ export default function UserProfile() {
       },
       onError: (errors) => {
         setError("Lỗi khi lưu thay đổi")
+        toast.error("Lỗi khi lưu thay đổi")
         setLoading(false)
       },
       onFinish: () => {
@@ -100,6 +113,7 @@ export default function UserProfile() {
       },
     })
   }
+  
 
   const handleCancel = () => {
     setName(originalData.name)
@@ -238,7 +252,7 @@ export default function UserProfile() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -50 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="p-5 w-full h-full"
+          className="p-5 w-full h-screen"
         >
           <div className="max-w-xl h-full flex flex-col gap-10 mx-auto bg-[#1f1f1f] text-white p-6 rounded-xl shadow-lg border border-white/10 space-y-6">
             <h2 className="text-2xl text-center font-bold text-[#dec599]">Thông tin người dùng</h2>
@@ -258,9 +272,6 @@ export default function UserProfile() {
             <div>{passwordFormSection}</div>
 
             {actionButtons}
-
-            {error && <p className="text-red-500">{error}</p>}
-            {success && <p className="text-green-500">{success}</p>}
           </div>
         </motion.div>
       </AnimatePresence>

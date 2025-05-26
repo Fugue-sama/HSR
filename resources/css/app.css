@@ -3,7 +3,7 @@
 
 body {
   @apply  w-full h-screen overflow-hidden;
-  background:  radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+background:  radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   font-family: "Roboto", Sans-serif;
 }
 

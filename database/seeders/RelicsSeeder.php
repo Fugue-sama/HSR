@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Relics;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class RelicsSeeder extends Seeder
@@ -104,7 +103,7 @@ class RelicsSeeder extends Seeder
             'set_two'=> 'Sát thương gây ra cho kẻ địch bị ảnh hưởng bởi Hiệu Ứng Xấu tăng',
             'set_four'=> 'Khi người trang bị thi triển Tuyệt Kỹ lên mục tiêu phe ta, tốc độ toàn phe ta tăng 12%, duy trì 1 hiệp, hiệu ứng này không thể cộng dồn.',
             'suit'=>json_encode([
-                'Head'=> 'head_kdpp2a',
+                'Head'=> 'p1ppxhna1mjuddagaafk',
                 'Hands'=> 'hands_kao956',
                 'Body'=> 'body_kxdg9p',
                 'Feet'=> 'feets_nuyh1k'
