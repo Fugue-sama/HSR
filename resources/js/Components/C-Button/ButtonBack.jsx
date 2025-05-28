@@ -16,8 +16,8 @@ function ButtonBack() {
         exit={{ x: 20, opacity: 0 }}
         transition={{duration: .3, ease: easeInOut}}
         className="reset-btn fixed left-10 p-2 rounded-full transition-all outline-none focus:outline-none ring-0 focus:ring-0
-                   hover:scale-110 active:scale-95 hover:-translate-x-[.5rem]"
-        style={{ cursor: 'pointer', zIndex: 1000 }}
+                   hover:scale-110 active:scale-95 hover:-translate-x-[.5rem] "
+        style={{ cursor: 'pointer', zIndex: 10 }}
       >
         <svg
           height="2rem"

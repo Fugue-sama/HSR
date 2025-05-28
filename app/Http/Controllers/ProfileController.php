@@ -25,7 +25,6 @@ class ProfileController extends Controller
             'name' => 'required|string|max:255',
             'avatar' => 'nullable',
         ]);
-
         if ($request->hasFile('avatar')) {
             $cloudinary = new Cloudinary();
             // Xóa avatar cũ nếu có

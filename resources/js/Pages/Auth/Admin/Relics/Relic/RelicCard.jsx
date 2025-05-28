@@ -2,7 +2,7 @@ import parse from 'html-react-parser'
 import { Link, router } from "@inertiajs/react"
 import Hashids from "hashids"
 import { motion , AnimatePresence} from 'framer-motion'
-import { getImage } from "../../../../../Utils/getImagePath"
+import { getImage, getImgPublic } from "../../../../../Utils/getImagePath"
 import React, { useEffect, useRef, useState } from 'react'
 import { toast } from 'react-toastify'
 import { route } from 'ziggy-js'
@@ -79,7 +79,11 @@ function RelicCard({ Relic }) {
                                         <img
                                             className=" h-full "
                                             src={getImage(value)}
+                                            onError={(e)=> { e.currentTarget.onerror  == null 
+                                                e.currentTarget.src = getImgPublic('logo-web.webp')
+                                            }}
                                             alt='suit'
+                                            
                                         />
                                     </div>
                                 ))}

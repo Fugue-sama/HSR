@@ -9,7 +9,7 @@ class Character extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name', 'image', 'faction', 'rarity', 'gameplay', 'skills', 'path_id', 'desc', 'stats' ,'souls', 'background' ,'materials', 'element_id', 'created_by', 'status'
+        'name', 'image', 'faction', 'rarity', 'gameplay', 'skills', 'path_id', 'desc', 'stats' ,'souls', 'background' ,'materials', 'element_id', 'status'
     ];
 // 'lightcore_id',
 

@@ -76,7 +76,7 @@ function NavbarWiki({ navigation }) {
                             bounce: 0.3,
                             duration: 0.5,
                         }}
-                        className="nav-wiki fixed w-[20%] bg-[#262b31] h-screen overflow-hidden z-50 shadow-[0_2px_4px_#262b31] "
+                        className="nav-wiki fixed w-[20%] bg-[#262b31] h-screen overflow-hidden z-100 shadow-[0_2px_4px_#262b31] "
                     >
                         <div className="tilte relative z-10 w-full bg-[#262b31] p-4 rounded-md shadow-lg">
                             <img

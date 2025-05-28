@@ -31,6 +31,8 @@ createInertiaApp({
       // Characters
       Characters: './Components/C-Characters/Characters.jsx',
       CharacterDetail: './Pages/Auth/User/Characters/Character/Detail/Detail.jsx',
+      CharacterDetail: './Pages/Auth/User/Characters/Character/Detail/Detail.jsx',
+      EditCharacter: './Pages/Auth/Form/CreateForm/Character/EditCharcter.jsx',
       CreateCharacter: './Pages/Auth/Form/CreateForm/Character/CreateCharacter.jsx',
     
       // Relics

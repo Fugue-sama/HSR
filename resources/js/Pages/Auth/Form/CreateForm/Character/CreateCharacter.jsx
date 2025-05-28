@@ -34,8 +34,6 @@ export default function CreateCharacter({ paths, elements, relics, ornaments, li
       setImagePreview(previewUrl);
     }
   }
-
-
   const { data, setData, post, processing, errors } = useForm({
     name: '',
     image: null,

@@ -301,7 +301,7 @@ class LightcoreController extends Controller
         ]);
 
         // Đồng bộ nhân vật (xóa cái cũ, thêm cái mới)
-        $lightcore->characters()->sync($validated['characters'] ?? []);
+        $lightcore->characters()->syncWithoutDetaching($validated['characters'] ?? []);
 
         return redirect()->route('lightcores.index')->with('success', 'Cập nhật Lightcore thành công!');
     }

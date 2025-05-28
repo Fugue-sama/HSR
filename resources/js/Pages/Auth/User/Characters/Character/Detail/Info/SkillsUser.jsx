@@ -71,7 +71,7 @@ export default function SkillsUser({pathID, skills }) {
                   <div
                     className="trace whitespace-normal trace-desc p-1 text-[1rem] text-left font-bold text-[hsl(0,0%,100%)] overflow-y-auto scrollbar mt-1 flex-1"
                   >
-                    {parse(skill?.desc || "")}
+                    { /<\/?[a-z][\s\S]*>/i.test(skill.desc || "") ? parse(skill?.desc || "") : <p style={{ whiteSpace: 'pre-line' }}>{skill.desc}</p>}
                   </div>
                 </div>
               </motion.div>

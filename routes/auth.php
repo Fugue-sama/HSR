@@ -35,9 +35,7 @@ Route::controller(AuthController::class)->group(function() {
   Route::get('/verify-email', 'verifyEmail')->name('verify.email');
   Route::post('send-verification', 'sendVerification')->middleware('web');
 
-  Route::get('/adm/reports', function () {
-        return Inertia::render('AdminReports');
-});
+ 
 });
 
 

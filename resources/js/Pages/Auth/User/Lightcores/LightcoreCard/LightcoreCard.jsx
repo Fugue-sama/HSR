@@ -13,7 +13,7 @@ function LightcoreCard({lightcore, path}) {
     key={lightcore.id} 
     initial={{ opacity: 0, y: 40, scale: 0.9 }}
     whileInView={{ opacity: 1, y: 0, scale: 1 }}
-    viewport={{ amount: 0.8 }}
+    viewport={{ amount: 0.3 }}
     className="lightcore-card btnFilter">
         <img
             src={getImage(path.image)}
@@ -23,7 +23,11 @@ function LightcoreCard({lightcore, path}) {
         <Link href={route('lightcore.detail', hashid.encode(lightcore.id))}
         className="lightcore-card-title relative flex m-1">
             <div className={`card-main`}>
-                <img className='absolute h-full pt-2 pl-1' src={getImage(lightcore.image)} alt="" />
+                <img className='absolute h-full pt-2 pl-1' 
+                src={getImage(lightcore.image)} 
+                onError={(e)=> {e.currentTarget.onerror = null 
+                e.currentTarget.src = getImgPublic('logo-web.webp')
+                }} alt="" />
             </div>
 
             <div className="lightcore-card-left flex flex-col w-[65%] left-[7.5rem] ">

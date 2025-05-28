@@ -128,108 +128,96 @@ export default function UserProfile() {
     setSuccess(null)
   }
 
-  const avatarSection = useMemo(
-    () => (
-      <div className="flex flex-col items-center">
-        <AvatarUpload isEditMode={isEditMode} avatar={avatar} setAvatar={setAvatar} disabled={!isEditMode} />
-      </div>
-    ),
-    [avatar, isEditMode]
+  const avatarSection = (
+    <div className="flex flex-col items-center">
+      <AvatarUpload
+        isEditMode={isEditMode}
+        avatar={avatar}
+        setAvatar={setAvatar}
+        disabled={!isEditMode}
+      />
+    </div>
   )
 
-  const nameSection = useMemo(() => {
-    if (isEditMode) {
-      return (
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="w-full px-3 py-2 rounded bg-[#2a2a2a] border border-white/10"
-        />
-      )
-    }
-    return (
-      <div className="flex items-center justify-between gap-2" title="Tên người dùng">
-        <span>{name}</span>
-      </div>
-    )
-  }, [name, isEditMode])
+  const nameSection = isEditMode ? (
+    <input
+      type="text"
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+      className="w-full px-3 py-2 rounded bg-[#2a2a2a] border border-white/10"
+    />
+  ) : (
+    <div className="flex items-center justify-between gap-2" title="Tên người dùng">
+      <span>{name}</span>
+    </div>
+  )
 
-  const passwordFormSection = useMemo(() => {
-    if (!isEditMode) return null
-    return (
-      <>
-        <button
-          type="button"
-          onClick={() => setShowPasswordForm(!showPasswordForm)}
-          className="text-[#df9e52] text-md text-left cursor-pointer rounded-[5px] w-full p-2 bg-[#2a2a2a]"
-          disabled={!isEditMode}
-        >
-          {showPasswordForm ? "✕ Hủy đổi mật khẩu" : "Đổi mật khẩu"}
-        </button>
-
-        {showPasswordForm && (
-          <div className="mt-4 space-y-3">
-            <input
-              type="password"
-              placeholder="Mật khẩu hiện tại"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 rounded bg-[#2a2a2a] border border-white/10"
-            />
-            <input
-              type="password"
-              placeholder="Mật khẩu mới"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-              className="w-full px-3 py-2 rounded bg-[#2a2a2a] border border-white/10"
-            />
-            <input
-              type="password"
-              placeholder="Xác nhận mật khẩu mới"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full px-3 py-2 rounded bg-[#2a2a2a] border border-white/10"
-            />
-          </div>
-        )}
-      </>
-    )
-  }, [isEditMode, showPasswordForm, password, newPassword, confirmPassword])
-
-  const actionButtons = useMemo(() => {
-    if (!isEditMode) {
-      return (
-        <button
-          type="button"
-          onClick={() => setIsEditMode(true)}
-          className="w-full bg-[#df9e52] text-black font-bold py-2 rounded hover:bg-[#e6ad66] transition cursor-pointer"
-        >
-          Chỉnh sửa
-        </button>
-      )
-    }
-
-    return (
-      <div className="flex gap-4">
-        <button
-          disabled={saving}
-          onClick={handleSave}
-          className="flex-1 bg-[#df9e52] text-black font-bold py-2 rounded hover:bg-[#e6ad66] transition disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
-        >
-          {saving ? "Đang lưu..." : "Lưu thay đổi"}
-        </button>
-        <button
-          type="button"
-          onClick={handleCancel}
-          disabled={saving}
-          className="flex-1 bg-gray-600 text-white font-bold py-2 rounded hover:bg-gray-700 transition disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
-        >
-          Hủy thay đổi
-        </button>
-      </div>
-    )
-  }, [isEditMode, saving])
+  const passwordFormSection = isEditMode && (
+    <>
+      <button
+        type="button"
+        onClick={() => setShowPasswordForm(!showPasswordForm)}
+        className="text-[#df9e52] text-md text-left cursor-pointer rounded-[5px] w-full p-2 bg-[#2a2a2a]"
+      >
+        {showPasswordForm ? "✕ Hủy đổi mật khẩu" : "Đổi mật khẩu"}
+      </button>
+  
+      {showPasswordForm && (
+        <div className="mt-4 space-y-3">
+          <input
+            type="password"
+            placeholder="Mật khẩu hiện tại"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full px-3 py-2 rounded bg-[#2a2a2a] border border-white/10"
+          />
+          <input
+            type="password"
+            placeholder="Mật khẩu mới"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            className="w-full px-3 py-2 rounded bg-[#2a2a2a] border border-white/10"
+          />
+          <input
+            type="password"
+            placeholder="Xác nhận mật khẩu mới"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            className="w-full px-3 py-2 rounded bg-[#2a2a2a] border border-white/10"
+          />
+        </div>
+      )}
+    </>
+  );
+  
+  const actionButtons = !isEditMode ? (
+    <button
+      type="button"
+      onClick={() => setIsEditMode(true)}
+      className="w-full bg-[#df9e52] text-black font-bold py-2 rounded hover:bg-[#e6ad66] transition cursor-pointer"
+    >
+      Chỉnh sửa
+    </button>
+  ) : (
+    <div className="flex gap-4">
+      <button
+        disabled={saving}
+        onClick={handleSave}
+        className="flex-1 bg-[#df9e52] text-black font-bold py-2 rounded hover:bg-[#e6ad66] transition disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+      >
+        {saving ? "Đang lưu..." : "Lưu thay đổi"}
+      </button>
+      <button
+        type="button"
+        onClick={handleCancel}
+        disabled={saving}
+        className="flex-1 bg-gray-600 text-white font-bold py-2 rounded hover:bg-gray-700 transition disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+      >
+        Hủy thay đổi
+      </button>
+    </div>
+  );
+  
 
   if (loading) {
     return (

@@ -26,7 +26,7 @@ function LightcoreCard({lightcore, path}) {
     key={lightcore.id} 
     initial={{ opacity: 0, y: 40, scale: 0.9 }}
     whileInView={{ opacity: 1, y: 0, scale: 1 }}
-    viewport={{ amount: 0.8 }}
+    viewport={{ amount: 0.3 }}
     className="lightcore-card btnFilter" ref={cardRef} onClick={() => setOpenChoose(!openChoose)}>
        <ImageWithFallback
             src={getImage(path.image)}

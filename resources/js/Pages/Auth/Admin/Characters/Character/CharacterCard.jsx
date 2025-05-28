@@ -76,7 +76,7 @@ function CharacterCard({ character, path, element }) {
           viewport={{ amount: 0.8 }}
           className="character-card btnFilter"
           onClick={() => setOpenChoose(!openChoose)}
-          style={{ pointerEvents: allImagesLoaded ? 'auto' : 'none' }} // disable click khi chưa load xong
+          style={{ pointerEvents: allImagesLoaded ? 'auto' : 'none' }}
         >
           <img
             onLoad={() => markImageLoaded('background')}
@@ -202,16 +202,17 @@ function CharacterCard({ character, path, element }) {
             )}
           </AnimatePresence>
         </motion.div>
-
-        {/* Overlay loading */}
-        <AnimatePresence>
+        
+      </div>
+      {/* Overlay loading */}
+      <AnimatePresence>
           {loading && (
             <motion.div
               key="loading-overlay"
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.6 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 bg-black flex justify-center items-center text-white text-xl font-bold"
+              className="fixed inset-0 w-screen left-0 h-screen z-50 bg-black flex justify-center items-center text-white text-xl font-bold"
             >
               Đang xử lý...
             </motion.div>
@@ -220,7 +221,6 @@ function CharacterCard({ character, path, element }) {
 
         {/* Toast container */}
         <ToastContainer position="top-right" />
-      </div>
     </>
   )
 }

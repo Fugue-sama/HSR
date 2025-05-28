@@ -2,6 +2,7 @@
 import '~css/login-register-form.css'
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid'
 import { Link, router, usePage } from '@inertiajs/react'
+import ButtonBack from '../../../Components/C-Button/ButtonBack'
 
 export default function Login({googleRedirectUrl}) {
   const { flash } = usePage().props
@@ -30,6 +31,7 @@ export default function Login({googleRedirectUrl}) {
   
   return (
     <div className='form-contain min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-white px-4'>
+      <ButtonBack />
       <div className='detail-form bg-white/10 backdrop-blur-lg border border-gray-200 shadow-lg rounded-xl p-8 w-full max-w-lg'>
         <h2 className='text-2xl font-bold text-center text-[#d4b990] mb-6'>Đăng nhập</h2>
         <form onSubmit={handleSubmit} className='space-y-6'>

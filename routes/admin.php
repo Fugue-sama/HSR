@@ -12,6 +12,7 @@ use App\Http\Controllers\PathController;
 use App\Http\Controllers\RelicsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,5 +70,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('adm')->name('adm.')->group(fu
     'index' => 'paths'
   ]);
   Route::resource('comments', PathController::class);
+});
+Route::get('/adm/reports', function () {
+  return Inertia::render('AdminReports');
 });
 

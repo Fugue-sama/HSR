@@ -21,7 +21,6 @@ function SkillsAdmin ({pathID, skills }) {
     setDirection(-1)
     setIndex((prev) => (prev - 1 + skillKeys.length) % skillKeys.length)
   }
-
   return (
    <>
     <div className="trace-content relative w-full h-full flex justify-center items-center">
@@ -70,7 +69,7 @@ function SkillsAdmin ({pathID, skills }) {
                   <div
                     className="trace whitespace-normal trace-desc p-1 text-[1rem] text-left font-bold text-[hsl(0,0%,100%)] overflow-y-auto scrollbar mt-1 flex-1"
                   >
-                    {parse(skill?.desc || "")}
+                    { /<\/?[a-z][\s\S]*>/i.test(skill.desc || "") ? parse(skill?.desc || "") : <p style={{ whiteSpace: 'pre-line' }}>{skill.desc}</p>}
                   </div>
                 </div>
               </motion.div>

@@ -74,20 +74,6 @@ export const ReportList = ({ reports, onSkip, onBlock, onDelete }) => {
             >
               Xóa comment
             </button>
-            <button
-              className="p-1 bg-[#262b31] rounded hover:bg-blue-700 text-[.8rem] whitespace-nowrap cursor-pointer"
-              onClick={(e) => {
-                e.stopPropagation()
-                const element = document.getElementById(`comment-${report.comment_id}`)
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth', block: 'center' })
-                  element.classList.add('ring-2', 'ring-blue-400')
-                  setTimeout(() => element.classList.remove('ring-2', 'ring-blue-400'), 3000)
-                }
-              }}
-            >
-              Xem comment
-            </button>
           </div>
         )}
       </div>

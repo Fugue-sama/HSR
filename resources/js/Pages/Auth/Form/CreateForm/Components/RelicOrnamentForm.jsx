@@ -8,7 +8,6 @@ import Hashids from "hashids"
 
 export default function RelicOrnamentForm({ formType = 'relic', initialSuitKeys, submitRoute, model,  method: submitMethod = 'post' }) {
   const hashid = new Hashids('salt', 8)
-  console.log(usePage().props)
   const [processing, setProcessing] = useState(false)
   const [typeOpen, setTypeOpen] = useState(false)
   const typeRef = useRef()
